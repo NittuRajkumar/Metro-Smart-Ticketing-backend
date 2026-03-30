@@ -29,7 +29,7 @@ const serializeUser = (user) => ({
 router.post('/register', [
   body('fullName').trim().notEmpty().withMessage('Full name is required'),
   body('email').isEmail().withMessage('Please provide a valid email'),
-  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
+  body('password').isLength({ min: 5 }).withMessage('Password must be at least 5 characters'),
   body('confirmPassword').custom((value, { req }) => {
     if (value !== req.body.password) {
       throw new Error('Passwords do not match');
